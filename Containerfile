@@ -1,7 +1,6 @@
 FROM quay.io/fedora-ostree-desktops/silverblue:37
 
 COPY layers .
-COPY flatpaks .
 
 # Layer some packages
 RUN rpm-ostree override remove firefox firefox-langpacks && \
@@ -10,9 +9,7 @@ RUN rpm-ostree override remove firefox firefox-langpacks && \
 # Flatpak some packages
 RUN flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && \
     flatpak remote-modify --enable flathub && \
-    flatpak remote-delete fedora --force && \
-    cat flatpaks | xargs flatpak install --noninteractive && \
-    flatpak override --socket=wayland --env=MOZ_ENABLE_WAYLAND=1 --env=MOZ_WEBRENDER=1 --env=MOZ_ACCELERATED=1 org.mozilla.firefox
+    flatpak remote-delete fedora --force
 
 # Get snapper running on /var/home
 COPY snapper /etc/snapper/configs/home
@@ -26,6 +23,6 @@ RUN sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-os
     systemctl enable snapper-cleanup.timer
 
 # Cleanup and finalize
-RUN rm layers flatpaks && \
+RUN rm layers && \
     rm -rf /tmp/* /var/* && \
     ostree container commit
