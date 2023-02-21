@@ -8,7 +8,9 @@ RUN rpm-ostree override remove firefox firefox-langpacks && \
 
 # Get snapper running on /var/home
 COPY snapper /etc/snapper/configs/home
-RUN echo "SNAPPER_CONFIGS=\"home\"" > /etc/conf.d/snapper
+
+RUN mkdir /etc/conf.d && \
+    echo "SNAPPER_CONFIGS=\"home\"" > /etc/conf.d/snapper
 
 # Start up some services
 RUN sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
