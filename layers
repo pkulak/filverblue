@@ -1,12 +1,13 @@
 distrobox
+light
 mako
 playerctl
+python3-i3ipc
+snapper
 sway
 swayidle
 waybar
-wlsunset
-wofi
-python3-i3ipc
-light
 wireguard-tools 
+wlsunset
 wl-clipboard
+wofi
