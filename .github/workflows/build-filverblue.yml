@@ -1,4 +1,4 @@
-name: build-boxkit
+name: build-filverblue
 on:
   pull_request:
     branches:
