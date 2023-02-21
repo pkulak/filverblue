@@ -8,7 +8,7 @@ RUN rpm-ostree override remove firefox firefox-langpacks && \
     cat layers | xargs rpm-ostree install
 
 # Flatpak some packages
-RUN flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flathubrepo && \
+RUN flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && \
     flatpak remote-modify --enable flathub && \
     flatpak remote-delete fedora --force && \
     cat flatpaks | xargs flatpak install --noninteractive && \
