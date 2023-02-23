@@ -8,7 +8,7 @@ RUN ostree container commit
 
 RUN rpm-ostree install ffmpeg
 
-RUN rpm-ostree uninstall https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-37.noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-37.noarch.rpm
+RUN rpm-ostree uninstall rpmfusion-free-release-37-1.noarch rpmfusion-nonfree-release-37-1.noarch
 
 RUN rpm-ostree commit
 
