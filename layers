@@ -3,6 +3,7 @@ light
 mako
 playerctl
 python3-i3ipc
+slurp
 snapper
 sway
 swayidle
