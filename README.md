@@ -1,6 +1,6 @@
 # filverblue
 
-My Silverblue boot container. Firefox is replaced with the Flatpak, Sway is installed, Snapper is set up to run on /home, and some other niceties.
+My Silverblue boot container. FFMPEG is installed so that Firefox can access all the codecs it needs, Sway is installed, Snapper is set up to run on /home, and some other niceties.
 
 Rebase to this, then check out my [distrobox container](https://github.com/pkulak/boxkit).
 
