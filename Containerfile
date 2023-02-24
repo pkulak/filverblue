@@ -1,5 +1,12 @@
 FROM quay.io/fedora-ostree-desktops/silverblue:37
 
+# Delete some silly repos
+
+RUN rm /etc/yum.repos.d/fedora-cisco-openh264.repo && \
+    rm /etc/yum.repos.d/google-chrome.repo && \
+    rm /etc/yum.repos.d/rpmfusion-nonfree-nvidia-driver.repo && \
+    rm /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
+
 # Install ffmpeg
 
 RUN rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-37.noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-37.noarch.rpm
@@ -9,16 +16,6 @@ RUN ostree container commit
 RUN rpm-ostree install ffmpeg
 
 RUN rpm-ostree uninstall rpmfusion-free-release rpmfusion-nonfree-release
-
-RUN ostree container commit
-
-# And Sublime Merge
-
-RUN curl https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo > /etc/yum.repos.d/sublime-text.repo 
-
-RUN rpm-ostree install sublime-merge
-
-RUN rm /etc/yum.repos.d/sublime-text.repo
 
 RUN ostree container commit
 
