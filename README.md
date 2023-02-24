@@ -4,6 +4,8 @@ My Silverblue boot container. It's pretty tailored to my specific tastes, but ob
 
 Rebase to this, then check out my [distrobox container](https://github.com/pkulak/boxkit).
 
+All thanks in the world to the [uBlue folks](https://github.com/ublue-os/) for inspiration and all the technique.
+
 ## Changes to Base Silverblue
 
 ### Sway
@@ -16,7 +18,7 @@ Removing the Silverblue Firefox and installing the Flatpak is great, but you kno
 
 ### Sublime Merge
 
-I'm addicted and I've had some issues with the Flatpak, so throw it into the container. The RPM installs into /opt by default, so thank you to [cgwalters](https://github.com/coreos/rpm-ostree/issues/233#issuecomment-1301194050) or I would have never figured it out!
+I'm addicted and I've had some issues with the Flatpak, so I throw it into the container. The RPM installs into /opt by default, so thank you to [cgwalters](https://github.com/coreos/rpm-ostree/issues/233#issuecomment-1301194050) or I would have never figured it out!
 
 ### Snapper
 
