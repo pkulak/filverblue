@@ -12,6 +12,16 @@ RUN rpm-ostree uninstall rpmfusion-free-release rpmfusion-nonfree-release
 
 RUN ostree container commit
 
+# And Sublime Merge
+
+RUN curl https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo > /etc/yum.repos.d/sublime-text.repo 
+
+RUN rpm-ostree install sublime-merge
+
+RUN rm /etc/yum.repos.d/sublime-text.repo
+
+RUN ostree container commit
+
 # Get snapper running on /var/home
 
 RUN rpm-ostree install snapper
