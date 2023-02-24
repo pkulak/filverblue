@@ -33,18 +33,26 @@ RUN mkdir /etc/conf.d && \
     echo "SNAPPER_CONFIGS=\"home\"" > /etc/conf.d/snapper
 
 # Layer some packages
+
 COPY layers .
 
 RUN cat layers | xargs rpm-ostree install -y
 
 # Start up some services
+
 RUN sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
     systemctl enable rpm-ostreed-automatic.timer && \
     systemctl enable rpm-ostree-countme.timer && \
     systemctl enable snapper-timeline.timer && \
     systemctl enable snapper-cleanup.timer
 
+# Use a nice runner script for Sway
+
+COPY start-sway /usr/bin/
+RUN sed -i 's/Exec.*/Exec=start-sway/' /usr/share/wayland-sessions/sway.desktop
+
 # Cleanup and finalize
+
 RUN rm layers && \
     rm -rf /tmp/* /var/* && \
     ostree container commit

@@ -8,7 +8,7 @@ Rebase to this, then check out my [distrobox container](https://github.com/pkula
 
 ### Sway
 
-It's the best window manager, so I layer it, plus most of the bits and obobs that you need to make it delightful.
+It's the best window manager, so I layer it, plus most of the bits and bobs that you need to make it delightful. Also, I stole the launcher script from the Fedora Sway spin.
 
 ### Firefox
 
