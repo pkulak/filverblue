@@ -7,6 +7,15 @@ RUN rm /etc/yum.repos.d/fedora-cisco-openh264.repo && \
     rm /etc/yum.repos.d/rpmfusion-nonfree-nvidia-driver.repo && \
     rm /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
 
+# Install Sublime Merge (remember to keep this RPM up to date...)
+
+RUN mkdir /var/opt && \
+    rpm -Uvh https://download.sublimetext.com/sublime-merge-2083-1.x86_64.rpm && \
+    mv /var/opt/sublime_merge/ /usr/lib/sublime_merge && \
+    echo 'L /opt/sublime_merge - - - - ../../usr/lib/sublime_merge' > /usr/lib/tmpfiles.d/sublime_merge.conf
+
+RUN ostree container commit
+
 # Install ffmpeg
 
 RUN rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-37.noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-37.noarch.rpm
