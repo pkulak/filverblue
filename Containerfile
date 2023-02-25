@@ -23,15 +23,6 @@ RUN rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-
     rpm-ostree uninstall rpmfusion-free-release rpmfusion-nonfree-release && \
     ostree container commit
 
-# Get snapper running on /var/home
-
-RUN rpm-ostree install snapper && ostree container commit
-
-COPY snapper /etc/snapper/configs/home
-
-RUN mkdir /etc/conf.d && \
-    echo "SNAPPER_CONFIGS=\"home\"" > /etc/conf.d/snapper
-
 # Layer some packages
 
 COPY layers .
