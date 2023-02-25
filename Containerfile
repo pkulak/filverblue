@@ -33,9 +33,7 @@ RUN cat layers | xargs rpm-ostree install -y
 
 RUN sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
     systemctl enable rpm-ostreed-automatic.timer && \
-    systemctl enable rpm-ostree-countme.timer && \
-    systemctl enable snapper-timeline.timer && \
-    systemctl enable snapper-cleanup.timer
+    systemctl enable rpm-ostree-countme.timer
 
 # Use a nice runner script for Sway
 
