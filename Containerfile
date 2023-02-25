@@ -19,7 +19,7 @@ RUN mkdir /var/opt && \
 
 RUN rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-37.noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-37.noarch.rpm && \
     ostree container commit && \
-    rpm-ostree install ffmpeg && \
+    rpm-ostree install ffmpeg-libs && \
     rpm-ostree uninstall rpmfusion-free-release rpmfusion-nonfree-release && \
     ostree container commit
 
