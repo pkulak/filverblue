@@ -7,6 +7,11 @@ RUN rm /etc/yum.repos.d/fedora-cisco-openh264.repo && \
     rm /etc/yum.repos.d/rpmfusion-nonfree-nvidia-driver.repo && \
     rm /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
 
+# Clean up Firefox
+
+RUN rpm-ostree override remove fedora-bookmarks && \
+    ostree container commit
+
 # Install Sublime Merge (remember to keep this RPM up to date...)
 
 RUN mkdir /var/opt && \
