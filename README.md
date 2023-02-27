@@ -14,7 +14,7 @@ It's the best window manager, so I layer it, plus most of the bits and bobs that
 
 ### Firefox
 
-Removing the Silverblue Firefox and installing the Flatpak is great, but you know what's _even_ better? Installing FFMPEG so that the Silverblue compile has all the codecs it needs.
+The Fedora version is removed (use the Flatpak version instead).
 
 ### Sublime Merge
 
