@@ -15,24 +15,14 @@ RUN mkdir /var/opt && \
     echo 'L /opt/sublime_merge - - - - ../../usr/lib/sublime_merge' > /usr/lib/tmpfiles.d/sublime_merge.conf && \
     ostree container commit
 
-# Clean up Firefox
-
-RUN rpm-ostree override remove fedora-bookmarks && \
-    ostree container commit
-
-# Install ffmpeg
-
-RUN rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-37.noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-37.noarch.rpm && \
-    ostree container commit && \
-    rpm-ostree install ffmpeg-libs && \
-    rpm-ostree uninstall rpmfusion-free-release rpmfusion-nonfree-release && \
-    ostree container commit
-
 # Layer some packages
 
 COPY layers .
 
-RUN cat layers | xargs rpm-ostree install -y
+RUN rpm-ostree override remove firefox firefox-langpacks && \
+    cat layers | xargs rpm-ostree install -y && \
+    ostree container commit && \
+    rm layers
 
 # Start up some services
 
@@ -47,6 +37,5 @@ RUN sed -i 's/Exec.*/Exec=start-sway/' /usr/share/wayland-sessions/sway.desktop
 
 # Cleanup and finalize
 
-RUN rm layers && \
-    rm -rf /tmp/* /var/* && \
+RUN rm -rf /tmp/* /var/* && \
     ostree container commit
