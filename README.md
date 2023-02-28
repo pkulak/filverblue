@@ -16,10 +16,6 @@ It's the best window manager, so I layer it, plus most of the bits and bobs that
 
 The Fedora version is removed (use the Flatpak version instead).
 
-### Sublime Merge
-
-I'm addicted and I've had some issues with the Flatpak, so I throw it into the container. The RPM installs into /opt by default, so thank you to [cgwalters](https://github.com/coreos/rpm-ostree/issues/233#issuecomment-1301194050) or I would have never figured it out!
-
 ## Usage
 
 Warning: This is an experimental feature and should not be used in production (yet), (however it's pretty close). Depending on the version of rpm-ostree on your system you might need to pass an additional `--experimental` flag
