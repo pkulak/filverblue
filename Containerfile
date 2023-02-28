@@ -7,6 +7,14 @@ RUN rm /etc/yum.repos.d/fedora-cisco-openh264.repo && \
     rm /etc/yum.repos.d/rpmfusion-nonfree-nvidia-driver.repo && \
     rm /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
 
+# Install stuff from RPM Fusion
+
+RUN rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-37.noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-37.noarch.rpm && \
+    ostree container commit && \
+    rpm-ostree install steam-devices && \
+    rpm-ostree uninstall rpmfusion-free-release rpmfusion-nonfree-release && \
+    ostree container commit
+
 # It's always bothered me that "vim" doesn't work...
 
 RUN ln -s /usr/bin/vi /usr/bin/vim
