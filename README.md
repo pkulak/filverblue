@@ -16,6 +16,10 @@ It's the best window manager, so I layer it, plus most of the bits and bobs that
 
 The Fedora version is removed (use the Flatpak version instead).
 
+### RPM Fusion
+
+Sometimes you just gotta have a package or two from RPM Fusion. This container installs the RPM Fusion repos, installs any packages from `rpm-fusion`, then uninstalls the repos, keeping everything clean and tidy.
+
 ## Usage
 
 Warning: This is an experimental feature and should not be used in production (yet), (however it's pretty close). Depending on the version of rpm-ostree on your system you might need to pass an additional `--experimental` flag

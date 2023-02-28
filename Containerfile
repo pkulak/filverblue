@@ -9,11 +9,14 @@ RUN rm /etc/yum.repos.d/fedora-cisco-openh264.repo && \
 
 # Install stuff from RPM Fusion
 
+COPY rpm-fusion .
+
 RUN rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-37.noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-37.noarch.rpm && \
     ostree container commit && \
-    rpm-ostree install steam-devices && \
+    cat rpm-fusion | xargs rpm-ostree install -y && \
     rpm-ostree uninstall rpmfusion-free-release rpmfusion-nonfree-release && \
-    ostree container commit
+    ostree container commit && \
+    rm rpm-fusion
 
 # It's always bothered me that "vim" doesn't work...
 
