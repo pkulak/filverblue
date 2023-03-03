@@ -31,6 +31,12 @@ RUN rpm-ostree override remove firefox firefox-langpacks && \
     ostree container commit && \
     rm layers
 
+# I'm not 100% sure this is still needed, but I don't think it can hurt.
+# https://www.reddit.com/r/Fedora/comments/l944bb/is_it_possible_to_install_silverblue_on_an/gnmktzx/
+
+RUN rpm-ostree kargs --append='rd.luks.options=discard' && \
+    ostree container commit
+
 # Start up some services
 
 RUN sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
