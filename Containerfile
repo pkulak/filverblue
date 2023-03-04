@@ -29,7 +29,8 @@ RUN sed -i 's/Exec.*/Exec=start-sway/' /usr/share/wayland-sessions/sway.desktop
 # Start up some services
 
 RUN systemctl enable rpm-ostreed-automatic.timer && \
-    systemctl enable rpm-ostree-countme.timer
+    systemctl enable rpm-ostree-countme.timer && \
+    systemctl enable flatpak-system-update.timer
 
 # Cleanup and finalize
 
