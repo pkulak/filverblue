@@ -32,7 +32,3 @@ RUN systemctl enable rpm-ostreed-automatic.timer && \
     systemctl enable rpm-ostree-countme.timer && \
     systemctl enable flatpak-system-update.timer
 
-# Cleanup and finalize
-
-RUN rm -rf /tmp/* /var/* && \
-    ostree container commit
