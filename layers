@@ -4,6 +4,7 @@ light
 mako
 playerctl
 python3-i3ipc
+python-requests-cache
 slurp
 snapper
 sway
