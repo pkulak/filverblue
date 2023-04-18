@@ -1,4 +1,4 @@
-FROM quay.io/fedora-ostree-desktops/silverblue:37
+FROM quay.io/fedora-ostree-desktops/silverblue:38
 
 # Delete some silly repos
 
