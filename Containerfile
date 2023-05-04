@@ -36,7 +36,7 @@ RUN cat layers | xargs rpm-ostree install -y && \
 # Remove RPM fusion
 
 RUN rpm-ostree uninstall rpmfusion-free-release rpmfusion-nonfree-release && \
-    ostree contrainer commit
+    ostree container commit
 
 # Use a nice runner script for Sway
 
