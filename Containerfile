@@ -17,6 +17,14 @@ COPY --from=ghcr.io/ublue-os/config:latest /files/ublue-os-update-services /
 RUN rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-38.noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-38.noarch.rpm && \
     ostree container commit
 
+# Remove some stuff
+
+COPY removals .
+
+RUN cat removals | xargs rpm-ostree override remove -y && \
+    ostree container commit && \
+    rm removals
+
 # Layer some packages
 
 COPY layers .

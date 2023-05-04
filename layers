@@ -3,8 +3,14 @@ distrobox
 ffmpeg
 ffmpeg-libs
 grim
+intel-media-driver
+kernel-devel-matched
+libva-intel-driver
+libva-utils
 light
 mako
+mesa-va-drivers-freeworld
+pipewire-codec-aptx
 playerctl
 python3-i3ipc
 python-requests-cache
