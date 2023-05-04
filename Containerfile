@@ -12,14 +12,23 @@ RUN rm /etc/yum.repos.d/fedora-cisco-openh264.repo && \
 COPY --from=ghcr.io/ublue-os/config:latest /files/ublue-os-udev-rules /
 COPY --from=ghcr.io/ublue-os/config:latest /files/ublue-os-update-services /
 
+# Setup RPM fusion
+
+RUN rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-38.noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-38.noarch.rpm &&
+    ostree container commit
+
 # Layer some packages
 
 COPY layers .
 
-RUN rpm-ostree override remove firefox firefox-langpacks && \
-    cat layers | xargs rpm-ostree install -y && \
+RUN cat layers | xargs rpm-ostree install -y && \
     ostree container commit && \
     rm layers
+
+# Remove RPM fusion
+
+RUN rpm-ostree uninstall rpmfusion-free-release rpmfusion-nonfree-release &&
+    ostree contrainer commit
 
 # Use a nice runner script for Sway
 
