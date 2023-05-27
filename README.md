@@ -12,9 +12,9 @@ All thanks in the world to the [uBlue folks](https://github.com/ublue-os/) for i
 
 It's the best window manager, so I layer it, plus most of the bits and bobs that you need to make it delightful. Also, I stole the launcher script from the Fedora Sway spin.
 
-### Firefox
+### Codecs
 
-The Fedora version is removed (use the Flatpak version instead).
+Stuff you probably want is installed from RPM Fusion, and then the RPM Fusion repo is removed.
 
 ## Usage
 
