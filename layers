@@ -12,6 +12,7 @@ mako
 mesa-va-drivers-freeworld
 pipewire-codec-aptx
 playerctl
+polkit-gnome
 python3-i3ipc
 python-requests-cache
 slurp
