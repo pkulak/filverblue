@@ -38,6 +38,10 @@ RUN cat layers | xargs rpm-ostree install -y && \
 RUN rpm-ostree uninstall rpmfusion-free-release rpmfusion-nonfree-release && \
     ostree container commit
 
+# Latest Distrobox release (remove when the repos update)
+RUN rpm-ostree install https://dl.fedoraproject.org/pub/fedora/linux/updates/testing/38/Everything/aarch64/Packages/d/distrobox-1.5.0.1-1.fc38.noarch.rpm && \
+    ostree container commit
+
 # Use a nice runner script for Sway
 
 COPY start-sway /usr/bin/
