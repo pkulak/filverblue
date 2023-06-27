@@ -4,6 +4,7 @@ ffmpeg-libs
 grim
 intel-media-driver
 kernel-devel-matched
+langpacks-en
 libva-intel-driver
 libva-utils
 light
